@@ -1,0 +1,37 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctx
+
+# Mobile Tools for Java (J2ME)
+.mtj .tmp/
+
+# Package Files
+*.jar
+*.war 
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machin crash logs
+hs_er_pid*
+
+# Maven
+
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+#Avoid ignoring maven wrapper jar file
+!/.mvn/wrapper/maven-wrapper.java
