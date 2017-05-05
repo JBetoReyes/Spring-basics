@@ -1,0 +1,3 @@
+# Spring exercises
+
+- Core tasks
