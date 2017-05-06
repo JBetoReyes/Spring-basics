@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean name="SequenceGenerator" class="com.jbetoreyes.maven.springcore.SequenceGenerator">
-		<property name="prefix">
+	<bean name="SequenceGenerator" class="com.jbetoreyes.maven.springcore.SequenceGenerator">	
+		<constructor-arg>
 			<value>30</value>
-		</property>
-
-		<property name="suffix">
+		</constructor-arg>
+		<constructor-arg>
 			<value>A</value>
-		</property>
-
-		<property name="initial">
+		</constructor-arg>
+		<constructor-arg>
 			<value>100000</value>
-		</property>
+		</constructor-arg>
 	</bean>
 </beans>
