@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean name="SequenceGenerator" class="com.jbetoreyes.maven.springcore.SequenceGenerator">	
-		<constructor-arg>
-			<value>30</value>
-		</constructor-arg>
-		<constructor-arg>
-			<value>A</value>
-		</constructor-arg>
-		<constructor-arg>
-			<value>100000</value>
-		</constructor-arg>
-	</bean>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean name="SequenceGenerator" class="com.jbetoreyes.maven.springcore.SequenceGenerator" p:prefix="30" p:suffix="A" p:initial="100000"/>
 </beans>
