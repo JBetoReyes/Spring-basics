@@ -15,6 +15,12 @@ public class SequenceGenerator{
 		this.initial = initial;
 	}
 	
+	public SequenceGenerator(int initial, String suffix) {
+		super();
+		this.initial = initial;
+		this.suffix = suffix;
+	}
+	
 	public SequenceGenerator(String prefix, String suffix) {
 		super();
 		this.prefix = prefix;
@@ -26,6 +32,8 @@ public class SequenceGenerator{
 		this.prefix = prefix;
 		this.initial = initial;
 	}
+	
+	
 
 	public String getPrefix() {
 		return prefix;

@@ -7,9 +7,9 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 		
 	<bean id="SequenceGenerator" class="com.jbetoreyes.maven.springcore.SequenceGenerator">
-		<constructor-arg value="30"/>
-		<constructor-arg value="100000"/>
-		<property name="suffix" value="A"/>
+		<constructor-arg type="int" index ="0" value="100000"/> <!-- The Order in which constructor-arg appear doesn't matter to select the constructor -->
+		<constructor-arg type="java.lang.String" index="1" value="A"/>
+		<property name="prefix" value="30"/>
 	</bean>
 	
 </beans>
