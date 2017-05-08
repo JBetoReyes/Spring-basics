@@ -6,10 +6,50 @@
 		xsi:schemaLocation="http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 		
-	<bean id="SequenceGenerator" class="com.jbetoreyes.maven.springcore.SequenceGenerator">
+	<bean id="sequenceGenerator" class="com.jbetoreyes.maven.springcore.SequenceGenerator">
 		<constructor-arg type="int" index ="0" value="100000"/> <!-- The Order in which constructor-arg appear doesn't matter to select the constructor -->
 		<constructor-arg type="java.lang.String" index="1" value="A"/>
 		<property name="prefix" value="30"/>
+	</bean>
+	
+	<bean name="sequenceGenerator2" class="com.jbetoreyes.maven.springcore.SequenceGenerator">
+		<property name="initial" value="100000"/>
+		<property name="suffix" value="A"/>
+		<property name="prefixGenerator" ref="datePrefixGenerator"/>					
+	</bean>
+	
+	<bean name="sequenceGenerator3" class="com.jbetoreyes.maven.springcore.SequenceGenerator">
+		<constructor-arg ref="datePrefixGenerator"/>
+		<property name="initial" value="100000"/>
+		<property name="suffix" value="A"/>	
+	</bean>
+	
+	<bean name="sequenceGenerator4" class="com.jbetoreyes.maven.springcore.SequenceGenerator">
+		<constructor-arg >
+			<bean id="datePrefixGenerator" class="com.jbetoreyes.maven.springcore.DatePrefixGenerator">
+				<property name="pattern" value="yyyyMMdd"/>
+			</bean>
+		</constructor-arg>
+		<property name="initial" value="100000"/>
+		<property name="suffix" value="A"/>	
+	</bean>		
+	
+	<bean name="sequenceGenerator5" 
+			class="com.jbetoreyes.maven.springcore.SequenceGenerator"
+			autowire="byType">
+		<property name="initial" value="100000"/>
+		<property name="suffix" value="A"/>	
+	</bean>		
+	
+	<bean name="sequenceGenerator6" 
+			class="com.jbetoreyes.maven.springcore.SequenceGenerator"
+			autowire="constructor">
+		<property name="initial" value="100000"/>
+		<property name="suffix" value="A"/>	
+	</bean>		
+	
+	<bean id="datePrefixGenerator" class="com.jbetoreyes.maven.springcore.DatePrefixGenerator">
+		<property name="pattern" value="yyyyMMdd"/>
 	</bean>
 	
 </beans>

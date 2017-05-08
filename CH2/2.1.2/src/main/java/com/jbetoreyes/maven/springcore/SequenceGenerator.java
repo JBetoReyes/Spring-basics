@@ -1,12 +1,18 @@
 package com.jbetoreyes.maven.springcore;
 
 public class SequenceGenerator{
+	
+	private PrefixGenerator prefixGenerator;
 	private String prefix;
 	private String suffix;
 	private int initial;
 	private int counter;
 	
 	public SequenceGenerator(){}
+	
+	public SequenceGenerator(PrefixGenerator prefixGenerator){
+		this.prefixGenerator = prefixGenerator;
+	}
 
 	public SequenceGenerator(String prefix, String suffix, int initial) {
 		super();
@@ -32,8 +38,14 @@ public class SequenceGenerator{
 		this.prefix = prefix;
 		this.initial = initial;
 	}
-	
-	
+		
+	public PrefixGenerator getPrefixGenerator() {
+		return prefixGenerator;
+	}
+
+	public void setPrefixGenerator(PrefixGenerator prefixGenerator) {
+		this.prefixGenerator = prefixGenerator;
+	}
 
 	public String getPrefix() {
 		return prefix;
@@ -61,7 +73,7 @@ public class SequenceGenerator{
 	
 	public synchronized String getSequence(){
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(prefix);
+		buffer.append(prefixGenerator.getPrefix());
 		buffer.append(initial + counter++);
 		buffer.append(suffix);
 		return buffer.toString();
