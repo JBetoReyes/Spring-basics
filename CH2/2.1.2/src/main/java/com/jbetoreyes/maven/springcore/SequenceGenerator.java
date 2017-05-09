@@ -1,10 +1,17 @@
 package com.jbetoreyes.maven.springcore;
 
+import java.text.DecimalFormat;
+import java.util.Formatter;
+import java.util.List;
+import java.util.Map;
+
 public class SequenceGenerator{
 	
 	private PrefixGenerator prefixGenerator;
 	private String prefix;
 	private String suffix;
+	private List<Object> suffixes;
+//	private Map<Object, Object> suffixes;
 	private int initial;
 	private int counter;
 	
@@ -71,12 +78,76 @@ public class SequenceGenerator{
 		this.initial = initial;
 	}
 	
+	
+	
+//	public List<Object> getSuffixes() {
+//		return suffixes;
+//	}
+//
+//	public void setSuffixes(List<Object> suffixes) {
+//		this.suffixes = suffixes;
+//	}
+	
+//	public Map<Object, Object> getSuffixes() {
+//		return suffixes;
+//	}
+//
+//	public void setSuffixes(Map<Object, Object> suffixes) {
+//		this.suffixes = suffixes;
+//	}
+
+	public List<Object> getSuffixes() {
+		return suffixes;
+	}
+
+	public void setSuffixes(List<Object> suffixes) {
+		this.suffixes = suffixes;
+	}
+	
 	public synchronized String getSequence(){
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(prefixGenerator.getPrefix());
+		buffer.append(prefix);
 		buffer.append(initial + counter++);
-		buffer.append(suffix);
+		
+		DecimalFormat formatter = new DecimalFormat("0000");
+		for(Object suffix : suffixes){
+			buffer.append("-" );
+			buffer.append(formatter.format((Integer) suffix));
+		}
 		return buffer.toString();
 		
 	}
+
+//	public synchronized String getSequence(){
+//		StringBuffer buffer = new StringBuffer();
+//		buffer.append(prefix);
+//		buffer.append(initial + counter++);
+//		for(Map.Entry suffix : suffixes.entrySet()){
+//			buffer.append("-" + suffix.getKey() + "@" + suffix.getValue());
+//		}
+//		return buffer.toString();
+//		
+//	}
+
+//	public synchronized String getSequence(){
+//		StringBuffer buffer = new StringBuffer();
+//		buffer.append(prefixGenerator.getPrefix());
+//		buffer.append(initial + counter++);
+//		for(Object suffix : suffixes){
+//			buffer.append("-" + suffix);
+//		}
+//		return buffer.toString();
+//		
+//	}
+	
+//	public synchronized String getSequence(){
+//		StringBuffer buffer = new StringBuffer();
+//		buffer.append(prefix);
+//		buffer.append(initial + counter++);
+//		for(Object suffix : suffixes){
+//			buffer.append("-" + suffix);
+//		}
+//		return buffer.toString();
+//		
+//	}
 }
